@@ -1,52 +1,144 @@
 import React from 'react';
-
+import CardOne from './CardOne';
+import CardTwo from './CardTwo';
+import CardThree from './CardThree';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+//import Button from '@material-ui/core/Button';
+import { green, pink } from '@material-ui/core/colors';
+import Avatar from '@material-ui/core/Avatar';
+import FolderIcon from '@material-ui/icons/Folder';
+import PageviewIcon from '@material-ui/icons/Pageview';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import Divider from '@material-ui/core/Divider';
+//import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
 
-const useStyles = makeStyles((theme) => ({
-    
+//import Toolbar from '@material-ui/core/Toolbar';
+
+//import Icon from "@material-ui/core/Icon";
+
+
+
+
+const drawerWidth = 140;
+
+const useStyles = makeStyles((theme) => (
+  {
+    root: {
+      width: '250px'
+    },
     appBar: {
       zIndex: theme.zIndex.drawer + 1,
     },
-    content: {
-      flexGrow: 1,
-      padding: theme.spacing(3),
+    drawer: {
+      width: drawerWidth,
+      flexShrink: 0,
     },
+    drawerPaper: {
+      width: drawerWidth,
+    },
+    drawerContainer: {
+      overflow: 'auto',
+    },
+    pink: {
+      color: theme.palette.getContrastText(pink[500]),
+      backgroundColor: pink[500],
+    },
+    green: {
+      color: '#fff',
+      backgroundColor: green[500],
+    },
+    content: {
+      
+      diplay: 'inline-flex',
+      marginLeft: '9.5rem',
+      marginTop: '2.5rem',
+      flexGrow: 1,
+      
+      //justifyContent: 'flex-end',
+      padding: theme.spacing(5),
+    },
+    
   }));
+
   
+export default function DashBoard() {
+  const classes = useStyles();
+   return (
+          <div>
+          
+          <Grid container className={classes.content}>
+          <Grid item xs={12} sm={4} md={4}>
+          <Card className={classes.root}>
+          <CardHeader
+                avatar={<Avatar>
+                <FolderIcon />
+               </Avatar>}
+                title="Card 1"
+                subheader="September 14, 2016"
+                />
+                <Divider variant="inset" />
+                
+                <CardOne className={classes.centerInteriorContent}/>
+         <CardActions>
+              <Typography variant="caption" color="primary" gutterBottom>
+              One paragraph
+              </Typography>
+                
+          </CardActions>   
+          
+          </Card>
+          </Grid>
+          
+          <Grid item xs={12} sm={4} md={4}>
+          <Card className={classes.root}>
+          
+          <CardHeader
+                avatar={<Avatar className={classes.green}>
+                  <PageviewIcon />
+                </Avatar>}
+                title="Card 2"
+                subheader="Total Net Income"
+                />
+          <Divider variant="inset" />
+          
+            <CardTwo />  
+          </Card>
+          
+          </Grid>
+          <Grid item xs={12} sm={4} md={4}>
+          <Card className={classes.root}>
+          
+          <CardHeader
+                avatar={<Avatar className={classes.pink}>
+                    <AssignmentIcon />
+                    </Avatar>}
+                title="Receivables"
+                subheader="Aging"
+                />
+             <Divider variant="inset" />
+             <CardThree />
+          
+         
+          
+          </Card>
+          
+          </Grid>
+        
+      
+        </Grid>
+        <Grid container className={classes.content}>
+          
 
-
-export default function DashBoard(){
-
-const classes = useStyles();
-   
-   return ( 
-<main className={classes.content}>
-        <Toolbar />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
-          facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-          gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
-          donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
-          Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
-          imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
-          arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-          donec massa sapien faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla
-          facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac
-          tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat
-          consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed
-          vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In
-          hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem et
-          tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique sollicitudin
-          nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
-          accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
-      </main>
+          
+          </Grid>
+        </div>
+      
+  
+      
 )
-}
+   }
