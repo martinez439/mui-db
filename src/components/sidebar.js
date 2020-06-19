@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+//import { NavLink } from 'react-router-dom';
 import { Link as RouterLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -15,6 +16,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 //import MailIcon from '@material-ui/icons/Mail';
 import DraftsIcon from '@material-ui/icons/Drafts';
+import PeopleIcon from '@material-ui/icons/People';
+import HomeIcon from '@material-ui/icons/Home';
+import DescriptionIcon from '@material-ui/icons/Description';
 
 
 
@@ -48,6 +52,7 @@ ListItemLink.propTypes = {
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -71,6 +76,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ClippedDrawer() {
   const classes = useStyles();
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const handleListItemClick = (event, index) => {
+    setSelectedIndex(index);
+  };
 
   return (
     <div className={classes.root}>
@@ -87,9 +96,29 @@ export default function ClippedDrawer() {
         <div className={classes.drawerContainer}>
 
         <List aria-label="main mailbox folders">
-            <ListItemLink to="/" primary="Dashboard" icon={<InboxIcon />} />
-            <ListItemLink to="/tickets" primary="Customers" icon={<DraftsIcon />} />
-            <ListItemLink to="/invoice" primary="Invoices" icon={<DraftsIcon />} />
+            <ListItemLink 
+            to="/" 
+            primary="Dashboard" 
+            icon={<HomeIcon />} 
+            
+            selected={selectedIndex === 0}
+            onClick={(event) => handleListItemClick(event, 0)}
+            />
+            <ListItemLink 
+            to="/tickets" 
+            primary="Customers" 
+            icon={<PeopleIcon />} 
+            
+            selected={selectedIndex === 1}
+            onClick={(event) => handleListItemClick(event, 1)}/>
+            <ListItemLink 
+            to="/invoice" 
+            primary="Invoices" 
+            icon={<DescriptionIcon />} 
+            
+            selected={selectedIndex === 2}
+            onClick={(event) => handleListItemClick(event, 2)}
+            />
           </List>
           <Divider />
           <List aria-label="secondary mailbox folders">

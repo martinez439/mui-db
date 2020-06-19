@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Icon from '@material-ui/core/Icon';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import clsx from 'clsx';
+import NotesOutlinedIcon from '@material-ui/icons/NotesOutlined';
+import AttachMoneyOutlinedIcon from '@material-ui/icons/AttachMoneyOutlined';
 
 
 export default class Invoice extends Component {
@@ -11,8 +18,8 @@ export default class Invoice extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      customer: "",
-      notes: "",
+      amount: "",
+      service: "",
       
     };
   }
@@ -20,13 +27,13 @@ export default class Invoice extends Component {
 
   onChangeEmployee(e) {
     this.setState({
-      customer: e.target.value
+      service: e.target.value
     });
   }
 
   onChangeDescription(e) {
     this.setState({
-      notes: e.target.value
+      amount: e.target.value
     });
   }
 
@@ -35,8 +42,8 @@ export default class Invoice extends Component {
     e.preventDefault();
 
     const workOrder = {
-      customer: this.state.customer,
-      notes: this.state.notes,
+      amount: this.state.amount,
+      service: this.state.service,
       
     };
 
@@ -52,39 +59,61 @@ export default class Invoice extends Component {
   render() {
     return (
       <div>
-        <h3>Create New Invoice</h3>
         <form onSubmit={this.onSubmit} style={{marginLeft: '12rem', marginTop: '5rem'}}>
-          <div className="form-group">
-            <label>Service: </label>
-            <input
-              type="text"
-              required
-              className="form-control"
-              value={this.state.customer}
-              onChange={this.onChangeEmployee}
-            />
+
+          <TextField
+          style={{marginBottom: '1rem'}}
+          label="Amount"
+          id="filled-start-adornment"
+          className={clsx()}
+          onChange={this.onChangeDescription}
+          value={this.state.amount}
+          InputProps={{
+            startAdornment: <InputAdornment position="start">
+              <AttachMoneyOutlinedIcon fontSize="small" color="disabled"/> </InputAdornment>,
+          }}
+          variant="filled"
+        />        
+        <br></br>
+        <div className="form-group">
+          <TextField
+          style={{marginBottom: '1rem'}}
+          label="Service Description"
+          id="filled-start-adornment"
+          className={clsx()}
+          onChange={this.onChangeEmployee}
+          value={this.state.service}
+          InputProps={{
+            startAdornment: <InputAdornment position="start">
+              <NotesOutlinedIcon fontSize="small" color="disabled"/>
+            </InputAdornment>,
+          }}
+          variant="filled"
+        /> 
+        </div>
         
-            
-          </div>
-          <div className="form-group">
-            <label>Amount: </label>
-            <input
-              type="text"
-              required
-              className="form-control"
-              value={this.state.notes}
-              onChange={this.onChangeDescription}
-            />
-          </div>
-       
+        
+      
+
 
           <div className="form-group">
-            <input
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              endIcon={<Icon>send</Icon>}
+              onSubmit={this.onSubmit}
+            >
+              Create
+            </Button>
+
+
+           {/* <input
               type="submit"
               value="Create WO"
               className="btn btn-primary"
               onSubmit={this.onSubmit}
-            />
+           /> */}
           </div>
         </form>
       </div>
