@@ -5,6 +5,8 @@ import Navbar from './components/navbar';
 import Tickets from './components/Tickets';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ConnectQb from './components/connect';
+import Invoice from './components/Invoice'
+
 
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
         <Route path="/" exact component={DashBoard} />
         <Route path="/tickets" component={Tickets} />
         <Route path="/connect" component={ConnectQb} />
+        <Route path="/invoice" component={Invoice} />
+        
       </Switch>
     
     </div>

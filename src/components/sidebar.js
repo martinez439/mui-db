@@ -88,7 +88,8 @@ export default function ClippedDrawer() {
 
         <List aria-label="main mailbox folders">
             <ListItemLink to="/" primary="Dashboard" icon={<InboxIcon />} />
-            <ListItemLink to="/tickets" primary="Tickets" icon={<DraftsIcon />} />
+            <ListItemLink to="/tickets" primary="Customers" icon={<DraftsIcon />} />
+            <ListItemLink to="/invoice" primary="Invoices" icon={<DraftsIcon />} />
           </List>
           <Divider />
           <List aria-label="secondary mailbox folders">
