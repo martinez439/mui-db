@@ -16,6 +16,8 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 import Divider from '@material-ui/core/Divider';
 //import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
+import ReminderList from './reminders';
+import CompletedReminders from './CompletedReminders';
 
 //import Toolbar from '@material-ui/core/Toolbar';
 
@@ -122,20 +124,17 @@ export default function DashBoard() {
                 />
              <Divider variant="inset" />
              <CardThree />
-          
          
-          
           </Card>
           
           </Grid>
-        
       
         </Grid>
         <Grid container className={classes.content}>
-          
-
-          
+        <ReminderList />
+        <CompletedReminders />
           </Grid>
+          
         </div>
       
   
