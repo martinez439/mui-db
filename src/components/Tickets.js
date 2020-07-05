@@ -7,6 +7,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import clsx from 'clsx';
 import NotesOutlinedIcon from '@material-ui/icons/NotesOutlined';
 import CreateIcon from '@material-ui/icons/Create';
+import CustomerList from "./CustomerList";
 
 
 export default class Tickets extends Component {
@@ -116,7 +117,11 @@ export default class Tickets extends Component {
               onSubmit={this.onSubmit}
            /> */}
           </div>
+          <CustomerList  />
         </form>
+           
+            
+        
       </div>
     );
   }

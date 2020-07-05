@@ -64,6 +64,17 @@ const useStyles = makeStyles((theme) => (
       //justifyContent: 'flex-end',
       padding: theme.spacing(5),
     },
+
+    reminders: {
+      
+      diplay: 'inline-flex',
+      marginLeft: '1.5rem',
+      marginTop: '.5rem',
+      flexGrow: 1,
+      
+      justifyContent: 'center',
+      padding: theme.spacing(8),
+    },
     
   }));
 
@@ -130,9 +141,11 @@ export default function DashBoard() {
           </Grid>
       
         </Grid>
-        <Grid container className={classes.content}>
+        <Grid container className={classes.reminders}>
         <ReminderList />
+        
         <CompletedReminders />
+        
           </Grid>
           
         </div>

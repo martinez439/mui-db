@@ -1,32 +1,55 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import UndoIcon from '@material-ui/icons/Undo';
+
+
 export class FinishedItem extends Component {
   getStyle = () => {
     return {
       color: "gray",
-      background: "#FFFFF",
-      padding: "20px",
+      background: "white",
+      
+      width: "280px",
       borderBottom: "3px #ccc dotted",
-      textDecoration: "line-through",
+      
     };
   };
 
   componentDidMount = (props) => {
+
+    
     //console.log(this.props.todo);
   };
 
+
   render() {
-    const { reminder } = this.props.todo;
+    const { _id, reminder } = this.props.todo;
     return (
       <div style={this.getStyle()}>
-        <p>
+        <div style={{display: 'flex', justifyContent:'flex-end',alignContent:'center'}}>
+        <p style={{display: 'flex',flex: '1' , justifyContent:'flex-start', alignContent:'center', textDecoration: "line-through",}}>
          
           {reminder}
-          <button style={btnStyle}>
-            x
-          </button>
-        </p>
+       </p>
+         
+
+            <IconButton 
+            aria-label="delete" 
+            onClick={() => {this.props.undoReminder(_id);} } 
+            >
+            <UndoIcon style={{color: 'gray'}}/> 
+            </IconButton>
+
+          <IconButton 
+          aria-label="delete" 
+          onClick={this.props.deleteReminder.bind(this,_id)} 
+          >
+            <DeleteIcon style={{color: '#ed8b8a'}}/> 
+          </IconButton>
+          </div>
       </div>
     );
   }
@@ -35,17 +58,11 @@ export class FinishedItem extends Component {
 // PropTypes
 FinishedItem.propTypes = {
   todo: PropTypes.object.isRequired,
+  deleteReminder: PropTypes.func.isRequired,
+  updateCompletedList: PropTypes.func.isRequired
  
 };
 
-const btnStyle = {
-  background: "#ff0000",
-  color: "#fff",
-  border: "none",
-  padding: "5px 9px",
-  borderRadius: "50%",
-  cursor: "pointer",
-  float: "right",
-}; 
+
 
 export default FinishedItem;

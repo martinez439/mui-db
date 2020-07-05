@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import CheckIcon from '@material-ui/icons/Check';
+import Button from '@material-ui/core/Button';
 
 export class ReminderItem extends Component {
   getStyle = () => {
     return {
       background: "#f4f4f4",
-      padding: "10px",
       borderBottom: "1px #ccc dotted",
-      textDecoration: this.props.todo.completed ? "line-through" : "none",
+      
     };
   };
 
@@ -16,16 +19,38 @@ export class ReminderItem extends Component {
   };
 
   render() {
-    const { reminder } = this.props.todo;
+    const { _id, reminder } = this.props.todo;
     return (
       <div style={this.getStyle()}>
-        <p>
-         
-          {reminder}
-          <button style={btnStyle}>
+        
+          <div style={{display: 'flex', justifyContent:'flex-end',alignContent:'center'}}>
+          <p style={{display: 'flex', flex: '1' , paddingLeft: '1rem', justifyContent:'flex-start', alignContent:'center', alignItems: 'center'}}>
+    
+            {" "}
+            {reminder}
+            {"      "}
+            </p>
+          <Button 
+          variant="contained" 
+          color="primary" 
+          size="small"
+          style={{marginTop: '1rem', marginBottom: '1rem'}}
+          onClick={() => {this.props.markComplete(_id);} } 
+          type="submit">
+            <CheckIcon /> 
+          </Button>
+
+          <IconButton 
+          aria-label="delete" 
+          onClick={this.props.deleteReminder.bind(this,_id)} 
+          >
+            <DeleteIcon style={{color: '#ed8b8a'}}/> 
+          </IconButton>
+          </div>
+          {/* <button style={btnStyle} onClick={this.props.deleteReminder.bind(this,_id)}>
             x
-          </button>
-        </p>
+             </button> */}
+        
       </div>
     );
   }
@@ -34,17 +59,11 @@ export class ReminderItem extends Component {
 // PropTypes
 ReminderItem.propTypes = {
   todo: PropTypes.object.isRequired,
+  markComplete: PropTypes.func.isRequired,
+  updateCompletedList: PropTypes.func.isRequired
  
 };
 
-const btnStyle = {
-  background: "#ff0000",
-  color: "#fff",
-  border: "none",
-  padding: "5px 9px",
-  borderRadius: "50%",
-  cursor: "pointer",
-  float: "right",
-}; 
+
 
 export default ReminderItem;

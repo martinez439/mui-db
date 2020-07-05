@@ -5,14 +5,14 @@ import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
-
 import AddIcon from '@material-ui/icons/Add';
-
 import CreateIcon from '@material-ui/icons/Create';
+import PropTypes from 'prop-types';
 
 
 export class AddReminder extends Component {
   state = {
+    
     reminder: '',
     isComplete: false
   }
@@ -21,7 +21,12 @@ export class AddReminder extends Component {
     e.preventDefault();
     const rem = {reminder: this.state.reminder, isComplete: this.state.isComplete};
     axios.post("http://localhost:8000/reminders/add", rem).then(res => console.log(res.data));
-    this.setState({ reminder: '' });
+    this.setState({ 
+      reminder: '',
+    });
+    this.props.addNew();
+    
+    
   }
 
   onChange = (e) => this.setState({ reminder: e.target.value, isComplete: false });
@@ -30,7 +35,6 @@ export class AddReminder extends Component {
     return (
 
      
-
       <form onSubmit={this.onSubmit} style={{ display: 'flex' }}>
           <TextField
           style={{marginBottom: '1rem'}}
@@ -45,24 +49,7 @@ export class AddReminder extends Component {
           }}
           variant="filled"
         /> 
-
-        {/*<input 
-          type="text" 
-          name="reminder" 
-          style={{ flex: '10', padding: '5px' }}
-          placeholder="Add Reminder ..." 
-          value={this.state.reminder}
-          onChange={this.onChange}
-        />
-        */}
-        {/*
-        <input 
-          type="submit" 
-          value="Submit" 
-          className="btn"
-          style={{flex: '1'}}
-        />
-        */}
+        
           <div>
             <Button
               type="submit"
@@ -80,6 +67,7 @@ export class AddReminder extends Component {
             >
               
             </Button>
+            
             </div>
       </form>
     )
@@ -87,8 +75,10 @@ export class AddReminder extends Component {
 }
 
 // PropTypes
-//AddReminder.propTypes = {
- // addReminder: PropTypes.func.isRequired
-//}
+AddReminder.propTypes = {
+  todos: PropTypes.array.isRequired,
+  markComplete: PropTypes.func.isRequired,
+  delTodo: PropTypes.func.isRequired,
+}
 
 export default AddReminder
