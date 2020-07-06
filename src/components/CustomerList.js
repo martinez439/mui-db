@@ -13,12 +13,12 @@ export default class CustomerList extends Component {
       };
       
       componentDidMount() {
-        fetch("http://localhost:8000/getCompanyInfo")
+        fetch("http://localhost:8000/customers")
           .then(res => res.json())
           .then(
             (result) => 
               this.setState({
-                items: result.CompanyInfo.CompanyName},
+                items: result.QueryResponse.Customer},
                 console.log(result)
               ),
               
@@ -32,8 +32,16 @@ export default class CustomerList extends Component {
         return (
             <div>
               <>
-              <Card >
-              <h2 style={{marginLeft: '1.5rem'}}>{items}</h2>
+              <Card>
+              
+            
+              <ul>
+                {items.map(item => (
+                  <li key={item.Id}>{item.DisplayName}</li>
+                ))}
+                
+              </ul>
+                
               </Card>
               </>
             </div>

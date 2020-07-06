@@ -8,9 +8,12 @@ import clsx from 'clsx';
 import NotesOutlinedIcon from '@material-ui/icons/NotesOutlined';
 import CreateIcon from '@material-ui/icons/Create';
 import CustomerList from "./CustomerList";
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
 
 
 export default class Tickets extends Component {
+  
   constructor(props) {
     super(props);
 
@@ -56,11 +59,14 @@ export default class Tickets extends Component {
       .catch(console.error);
     window.location = "/";
   }
+  
 
   render() {
+
     return (
       <div>
-        
+        <Grid container spacing={3}>
+          <Grid item sm={6}>
         <form onSubmit={this.onSubmit} style={{marginLeft: '12rem', marginTop: '5rem'}}>
           
         <TextField
@@ -117,11 +123,18 @@ export default class Tickets extends Component {
               onSubmit={this.onSubmit}
            /> */}
           </div>
-          <CustomerList  />
+          
         </form>
+        </Grid>
            
-            
-        
+           <Grid 
+           item sm={6}
+           style={{marginTop: '5rem', padding: '1rem'}}
+           >
+           <CustomerList  />
+           </Grid>
+
+        </Grid>
       </div>
     );
   }
