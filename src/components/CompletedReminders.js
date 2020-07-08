@@ -64,7 +64,7 @@ export default class CompletedReminders extends Component {
         });
       }
 
-      updateCompletedList() {
+      updateCompletedList = () => {
         axios
           .get("http://localhost:8000/reminders/unchecked")
     
@@ -99,7 +99,7 @@ export default class CompletedReminders extends Component {
       render() {
         return (
          
-            <div className="App">
+            <div className="CompletedSection">
               <div className="container">
                 
                     <React.Fragment>

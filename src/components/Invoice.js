@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import InvoiceList from './InvoiceList';
 import axios from "axios";
 import Icon from '@material-ui/core/Icon';
 import Button from '@material-ui/core/Button';
@@ -7,6 +8,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import clsx from 'clsx';
 import NotesOutlinedIcon from '@material-ui/icons/NotesOutlined';
 import AttachMoneyOutlinedIcon from '@material-ui/icons/AttachMoneyOutlined';
+import Grid from '@material-ui/core/Grid';
 
 
 export default class Invoice extends Component {
@@ -59,6 +61,8 @@ export default class Invoice extends Component {
   render() {
     return (
       <div>
+        <Grid container spacing={3}>
+          <Grid item sm={6}>
         <form onSubmit={this.onSubmit} style={{marginLeft: '12rem', marginTop: '5rem'}}>
 
           <TextField
@@ -116,6 +120,15 @@ export default class Invoice extends Component {
            /> */}
           </div>
         </form>
+       </Grid>
+
+        <Grid 
+           item sm={6}
+           style={{marginTop: '5rem', padding: '1rem'}}
+           >
+          <InvoiceList />
+           </Grid>
+        </Grid>
       </div>
     );
   }
