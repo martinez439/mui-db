@@ -20,7 +20,7 @@ import DescriptionIcon from '@material-ui/icons/Description';
 
 
 
-const drawerWidth = 180;
+const drawerWidth = 165;
 function ListItemLink(props) {
   const { icon, primary, to } = props;
 

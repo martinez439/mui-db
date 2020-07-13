@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+@media (max-width:700px){
+  .ReminderSection{
+    margin: 0 0 0 5rem;
+  }
+  .GridContainer{
+    margin: 0 0 0 4rem;
+  }
+ 
+
+};
+
+@media (max-width:599px){
+.InvoiceList{
+ margin: 0 0 0 25rem;
+}
+};

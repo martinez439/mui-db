@@ -54,7 +54,7 @@ export default class Tickets extends Component {
     console.log(workOrder);
 
     axios
-      .post("http://localhost:8000/customer", workOrder)
+      .post("https://pacific-wildwood-91690.herokuapp.com/customer", workOrder)
       .then(res => console.log(res.data))
       .catch(console.error);
     window.location = "/";
@@ -66,7 +66,7 @@ export default class Tickets extends Component {
     return (
       <div>
         <Grid container spacing={3}>
-          <Grid item sm={6}>
+          <Grid item md={4} sm={6}>
         <form onSubmit={this.onSubmit} style={{marginLeft: '12rem', marginTop: '5rem'}}>
           
         <TextField
@@ -128,7 +128,7 @@ export default class Tickets extends Component {
         </Grid>
            
            <Grid 
-           item sm={6}
+           item md={8} sm={6}
            style={{marginTop: '5rem', padding: '1rem'}}
            >
            <CustomerList  />

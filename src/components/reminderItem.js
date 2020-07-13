@@ -24,7 +24,7 @@ export class ReminderItem extends Component {
       <div style={this.getStyle()}>
         
           <div style={{display: 'flex', justifyContent:'flex-end',alignContent:'center'}}>
-          <p style={{display: 'flex', flex: '1' , paddingLeft: '1rem', justifyContent:'flex-start', alignContent:'center', alignItems: 'center'}}>
+          <p style={{display: 'flex', flex: '1' , paddingLeft: '1rem', paddingRight:'2rem',justifyContent:'flex-start', alignContent:'center', alignItems: 'center'}}>
     
             {" "}
             {reminder}

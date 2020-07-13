@@ -20,7 +20,7 @@ export class AddReminder extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const rem = {reminder: this.state.reminder, isComplete: this.state.isComplete};
-    axios.post("http://localhost:8000/reminders/add", rem).then(res => console.log(res.data));
+    axios.post("https://pacific-wildwood-91690.herokuapp.com/reminders/add", rem).then(res => console.log(res.data));
     this.setState({ 
       reminder: '',
     });
@@ -35,9 +35,9 @@ export class AddReminder extends Component {
     return (
 
      
-      <form onSubmit={this.onSubmit} style={{ display: 'flex' }}>
+      <form onSubmit={this.onSubmit} style={{ display: 'flex' }} className="ReminderForm">
           <TextField
-          style={{marginBottom: '1rem'}}
+          style={{marginBottom: '1rem', marginLeft:'3rem'}}
           label="Add reminder"
           id="filled-start-adornment"
           className={clsx()}

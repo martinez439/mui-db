@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Typography from '@material-ui/core/Typography';
+
 
 import Grid from '@material-ui/core/Grid';
 
@@ -11,21 +11,17 @@ class ConnectQb extends Component {
             
             <Grid>
             <div>
-            <Typography paragraph>
-         
-          One paragraph
-          
-          </Typography>
+           
                 
                 <button onClick={() => {
-            window.location = window.location.href.includes('localhost') 
-              ? 'http://localhost:8000/login' 
-              : 'http://localhost:8000' }
+            window.location = window.location.href
+              ? 'https://pacific-wildwood-91690.herokuapp.com/login' 
+              : 'https://pacific-wildwood-91690.herokuapp.com/' }
                 }
-                style={{padding: '10px', 
-                'fontSize': '30px', 
-                'marginTop': '10rem', 
-                'marginLeft' : '25rem' }}>
+                style={{padding: '8px', 
+                'fontSize': '20px', 
+                'marginTop': '1rem', 
+                'marginLeft' : '1rem' }}>
               Connect QuickBooks</button>
         
             </div>

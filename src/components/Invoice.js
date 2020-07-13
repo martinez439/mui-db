@@ -52,7 +52,7 @@ export default class Invoice extends Component {
     console.log(workOrder);
 
     axios
-      .post("http://localhost:8000/createinvoice", workOrder)
+      .post("https://pacific-wildwood-91690.herokuapp.com/createinvoice", workOrder)
       .then(res => console.log(res.data))
       .catch(console.error);
     window.location = "/";
@@ -62,7 +62,7 @@ export default class Invoice extends Component {
     return (
       <div>
         <Grid container spacing={3}>
-          <Grid item sm={6}>
+          <Grid item md={4} sm={6}>
         <form onSubmit={this.onSubmit} style={{marginLeft: '12rem', marginTop: '5rem'}}>
 
           <TextField
@@ -123,9 +123,9 @@ export default class Invoice extends Component {
        </Grid>
 
         <Grid 
-           item sm={6}
+           item md={6} sm={6} xs={16}
            style={{marginTop: '5rem', padding: '1rem'}}
-           >
+           className="InvoiceList">
           <InvoiceList />
            </Grid>
         </Grid>

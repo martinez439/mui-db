@@ -12,7 +12,7 @@ export default class CardOne extends Component {
       };
       
       componentDidMount() {
-        fetch("http://localhost:8000/getCompanyInfo")
+        fetch("https://pacific-wildwood-91690.herokuapp.com/getCompanyInfo")
           .then(res => res.json())
           .then(
             (result) => 

@@ -6,6 +6,8 @@ import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import UndoIcon from '@material-ui/icons/Undo';
+import Grid from '@material-ui/core/Grid';
+
 
 
 
@@ -29,7 +31,7 @@ export default class ReminderList extends Component {
 
       componentDidMount() {
         axios
-          .get("http://localhost:8000/reminders")
+          .get(`https://pacific-wildwood-91690.herokuapp.com/reminders`)
     
           .then(response => {
 
@@ -47,7 +49,7 @@ export default class ReminderList extends Component {
 
       updateCompletedList = () => {
         axios
-          .get("http://localhost:8000/reminders/unchecked")
+          .get("https://pacific-wildwood-91690.herokuapp.com/reminders/unchecked")
     
           .then(response => {
 
@@ -63,7 +65,7 @@ export default class ReminderList extends Component {
 
       markComplete (id, reminder) {
         axios
-          .patch("http://localhost:8000/reminders/" + id, { isComplete: "true" })
+          .patch("https://pacific-wildwood-91690.herokuapp.com/reminders/" + id, { isComplete: "true" })
           .then(response => {
             console.log(response.data);
           })
@@ -85,7 +87,7 @@ export default class ReminderList extends Component {
       
 
       deleteReminder(id) {
-        axios.delete("http://localhost:8000/reminders/" + id).then(response => {
+        axios.delete("https://pacific-wildwood-91690.herokuapp.com/reminders/" + id).then(response => {
           console.log(response.data);
         });
     
@@ -97,7 +99,7 @@ export default class ReminderList extends Component {
       
       addNew() {
         axios
-          .get("http://localhost:8000/reminders")
+          .get("https://pacific-wildwood-91690.herokuapp.com/reminders")
     
           .then(response => {
 
@@ -115,7 +117,7 @@ export default class ReminderList extends Component {
 
         undoReminder (id) {
           axios
-            .patch("http://localhost:8000/reminders/" + id, { isComplete: "false" })
+            .patch("https://pacific-wildwood-91690.herokuapp.com/reminders/" + id, { isComplete: "false" })
             .then(response => {
               console.log(response.data);
             })
@@ -124,7 +126,8 @@ export default class ReminderList extends Component {
             });
             
             this.setState({
-              todos: this.state.todos.filter(todo => todo._id !== id)
+              completedSection: this.state.completedSection.filter(todo => todo._id !== id),
+
             });
             window.location.reload();
               
@@ -153,9 +156,10 @@ export default class ReminderList extends Component {
         
         return (
         this.state.completedSection.map((completedSection) => 
-        <div style={{display: 'flex', justifyContent:'flex-end',alignContent:'center'}}>
+        <div style={{display: 'flex', justifyContent:'flex-end', alignContent:'center'}}>
         <li style={{listStyleType: "none",
             display: 'flex',
+            paddingLeft: '1rem',
             flex: '1' , 
             justifyContent:'flex-start', 
             alignContent:'center', 
@@ -164,7 +168,7 @@ export default class ReminderList extends Component {
         }}>{ completedSection.reminder } </li>
          <IconButton 
             aria-label="delete" 
-            onClick={() => this.undoReminder} 
+            onClick={() => this.undoReminder(completedSection._id)} 
             >
             <UndoIcon style={{color: 'gray'}}/> 
             </IconButton>
@@ -181,11 +185,11 @@ export default class ReminderList extends Component {
 
         getStyle = () => {
           return {
+            marginTop: '1rem',
             color: "gray",
             background: "white",
+            width: "200px",
             
-            width: "280px",
-            borderBottom: "3px #ccc dotted",
             
           };
         };
@@ -196,9 +200,12 @@ export default class ReminderList extends Component {
         return (
          
             <div className="App">
-              <div className="container">
+              <div className="ReminderSection">
                 
                     <React.Fragment>
+                    
+                
+
                       <div style={{justifyContent:'flex-end'}}>
                       <AddReminder 
                       addReminder={this.addReminder}
@@ -206,20 +213,36 @@ export default class ReminderList extends Component {
                       
                       />
                       </div>
-                      <Paper elevation={3}>
+                      <Grid container className="GridContainer">
+                        <Grid item>
+                      <Paper 
+                      elevation={3} 
+                      style={{marginRight:'1rem'
+
+                      }}>
                         <h1 
                         style={{
-                          display: 'flex', 
+                        
+                        display: 'flex', 
                         marginBottom:'.5rem',
                         alignContent: 'center', 
                         alignItems:'center', 
-                        justifyContent:'center'}}> Reminders:</h1> 
+                        justifyContent:'center'}}> Reminders</h1> 
                       {this.remList()}
                       </Paper>
-
+                      </Grid>
+                      <Grid item>
                       <Paper elevation={3} style={this.getStyle()}>
+                        <h1 style={{display: 'flex', 
+                        marginBottom:'.5rem',
+                        alignContent: 'center', 
+                        alignItems:'center', 
+                        justifyContent:'center'}}>Completed</h1>
                        {this.doneList()} 
                       </Paper>
+                      
+                      </Grid>
+                      </Grid>
                     </React.Fragment>
                     
                 

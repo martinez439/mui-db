@@ -12,7 +12,7 @@ export default class ApiCall extends Component {
       };
     
        apiCall() {
-        fetch("http://localhost:8000/getCompanyInfo")
+        fetch("https://pacific-wildwood-91690.herokuapp.com/getCompanyInfo")
           .then(res => res.json())
           .then(
             (result) => 

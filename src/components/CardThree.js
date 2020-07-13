@@ -12,7 +12,7 @@ export default class CardThree extends Component {
       };
       
       componentDidMount() {
-        fetch("http://localhost:8000/receive")
+        fetch("https://pacific-wildwood-91690.herokuapp.com/receive")
           .then(res => res.json())
           .then(
             (result) => 
@@ -29,10 +29,13 @@ export default class CardThree extends Component {
 
     render() {
       const { items } = this.state;
+      let cardThreeNum = Math.trunc(items);
+      let newNumThree = cardThreeNum.toString().split( /(?=(?:\d{3})+(?:\.|$))/g ).join( "," );
+      
         return (
             <div>
               <>
-              <h1 style={{marginLeft: '1.5rem'}}>${items}</h1>
+              <h1 style={{marginLeft: '1.5rem'}}>${newNumThree}</h1>
               </>
             </div>
         )

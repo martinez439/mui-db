@@ -21,7 +21,7 @@ export default class CompletedReminders extends Component {
 
       componentDidMount() {
         axios
-          .get("http://localhost:8000/reminders/unchecked")
+          .get("https://pacific-wildwood-91690.herokuapp.com/reminders/unchecked")
     
           .then(response => {
 
@@ -39,7 +39,7 @@ export default class CompletedReminders extends Component {
 
       undoReminder (id) {
         axios
-          .patch("http://localhost:8000/reminders/" + id, { isComplete: "false" })
+          .patch("https://pacific-wildwood-91690.herokuapp.com/reminders/" + id, { isComplete: "false" })
           .then(response => {
             console.log(response.data);
           })
@@ -55,7 +55,7 @@ export default class CompletedReminders extends Component {
       };
 
       deleteReminder(id) {
-        axios.delete("http://localhost:8000/reminders/" + id).then(response => {
+        axios.delete("https://pacific-wildwood-91690.herokuapp.com/reminders/" + id).then(response => {
           console.log(response.data);
         });
     
@@ -66,7 +66,7 @@ export default class CompletedReminders extends Component {
 
       updateCompletedList = () => {
         axios
-          .get("http://localhost:8000/reminders/unchecked")
+          .get("https://pacific-wildwood-91690.herokuapp.com/reminders/unchecked")
     
           .then(response => {
 

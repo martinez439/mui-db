@@ -17,7 +17,7 @@ import Divider from '@material-ui/core/Divider';
 //import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import ReminderList from './reminders';
-
+import ConnectQb from './connect'
 
 //import Toolbar from '@material-ui/core/Toolbar';
 
@@ -31,7 +31,8 @@ const drawerWidth = 140;
 const useStyles = makeStyles((theme) => (
   {
     root: {
-      width: '250px'
+      width: '250px',
+      marginTop: '.5rem'
     },
     appBar: {
       zIndex: theme.zIndex.drawer + 1,
@@ -73,7 +74,7 @@ const useStyles = makeStyles((theme) => (
       flexGrow: 1,
       
       justifyContent: 'center',
-      padding: theme.spacing(8),
+      padding: theme.spacing(2),
     },
     
   }));
@@ -85,7 +86,7 @@ export default function DashBoard() {
           <div>
           
           <Grid container className={classes.content}>
-          <Grid item xs={12} sm={4} md={4}>
+          <Grid item xs={12} sm={4} md={3.5}>
           <Card className={classes.root}>
           <CardHeader
                 avatar={<Avatar>
@@ -107,7 +108,7 @@ export default function DashBoard() {
           </Card>
           </Grid>
           
-          <Grid item xs={12} sm={4} md={4}>
+          <Grid item xs={12} sm={4} md={3.5}>
           <Card className={classes.root}>
           
           <CardHeader
@@ -123,7 +124,7 @@ export default function DashBoard() {
           </Card>
           
           </Grid>
-          <Grid item xs={12} sm={4} md={4}>
+          <Grid item xs={12} sm={4} md={2} >
           <Card className={classes.root}>
           
           <CardHeader
@@ -139,9 +140,10 @@ export default function DashBoard() {
           </Card>
           
           </Grid>
-      
+          <ConnectQb />
         </Grid>
         <Grid container className={classes.reminders}>
+          
         <ReminderList />
         
           </Grid>

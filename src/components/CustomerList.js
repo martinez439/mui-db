@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import Card from '@material-ui/core/Card';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import Divider from '@material-ui/core/Divider';
 
 
 export default class CustomerList extends Component {
@@ -13,7 +16,7 @@ export default class CustomerList extends Component {
       };
       
       componentDidMount() {
-        fetch("http://localhost:8000/customers")
+        fetch("https://pacific-wildwood-91690.herokuapp.com/customers")
           .then(res => res.json())
           .then(
             (result) => 
@@ -32,16 +35,22 @@ export default class CustomerList extends Component {
         return (
             <div>
               <>
-              <Card>
+              <Card 
+              style={{ marginRight:'2rem'}}
+              className="CustomerList">
               
-            
-              <ul>
+              <List>
+              
                 {items.map(item => (
-                  <li key={item.Id}>{item.DisplayName}</li>
+                  <ListItem alignItems="flex-start" key={item.Id}>
+                    <Divider component="li" style={{
+                        margin: '0 0 25px 0'
+                  }}><li><h4>{item.DisplayName}</h4></li>
+                  </Divider>
+                  </ListItem>
                 ))}
                 
-              </ul>
-                
+              </List>
               </Card>
               </>
             </div>
