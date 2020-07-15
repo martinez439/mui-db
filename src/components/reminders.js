@@ -31,7 +31,7 @@ export default class ReminderList extends Component {
 
       componentDidMount() {
         axios
-          .get(`https://pacific-wildwood-91690.herokuapp.com/reminders`)
+          .get("https://pacific-wildwood-91690.herokuapp.com/reminders")
     
           .then(response => {
 
