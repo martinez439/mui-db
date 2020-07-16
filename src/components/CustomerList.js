@@ -3,6 +3,21 @@ import Card from '@material-ui/core/Card';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
+import Avatar from '@material-ui/core/Avatar';
+import PeopleIcon from '@material-ui/icons/People';
+import CardHeader from '@material-ui/core/CardHeader';
+import { css } from "@emotion/core";
+import MoonLoader from "react-spinners/MoonLoader";
+
+
+const override = css`
+  display: block;
+  margin: 4rem 0 0 5rem;
+  border-color: #3F51B6;
+`;
+const avatar = `
+backgroundColor: red[500]
+`;
 
 
 export default class CustomerList extends Component {
@@ -10,7 +25,8 @@ export default class CustomerList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          items: []
+          items: [],
+          loading: true
         };
         
       };
@@ -21,7 +37,8 @@ export default class CustomerList extends Component {
           .then(
             (result) => 
               this.setState({
-                items: result.QueryResponse.Customer},
+                items: result.QueryResponse.Customer,
+                loading: false},
                 console.log(result)
               ),
               
@@ -31,13 +48,32 @@ export default class CustomerList extends Component {
 
 
     render() {
-      const { items } = this.state;
+      const { items, loading } = this.state;
         return (
             <div>
               <>
+              {loading ? <div className="sweet-loading">
+                    <MoonLoader
+
+
+
+                      css={override}
+                      size={62}
+                      color={"#3f51b6"}
+                      loading={this.state.loading}
+                    />  </div> :
+
+                  
               <Card 
               style={{ marginRight:'2rem'}}
               className="CustomerList">
+                <CardHeader title="Customers"  subheader="Active"
+                avatar={
+                  <Avatar aria-label="recipe" className={avatar} style={{backgroundColor: '#3f51b5'}}>
+                    <PeopleIcon />
+                  </Avatar>
+                } />
+                
               
               <List>
               
@@ -51,7 +87,7 @@ export default class CustomerList extends Component {
                 ))}
                 
               </List>
-              </Card>
+              </Card>}
               </>
             </div>
         )

@@ -11,7 +11,6 @@ import CustomerList from "./CustomerList";
 import Grid from '@material-ui/core/Grid';
 
 
-
 export default class Tickets extends Component {
   
   constructor(props) {
@@ -62,7 +61,7 @@ export default class Tickets extends Component {
   
 
   render() {
-
+    
     return (
       <div>
         <Grid container spacing={3}>
@@ -128,7 +127,7 @@ export default class Tickets extends Component {
         </Grid>
            
            <Grid 
-           item md={8} sm={6}
+           item lg={16} md={12} sm={8}
            style={{marginTop: '5rem', padding: '1rem'}}
            >
            <CustomerList  />

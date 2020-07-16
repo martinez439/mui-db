@@ -2,26 +2,23 @@ import React from 'react';
 import CardOne from './CardOne';
 import CardTwo from './CardTwo';
 import CardThree from './CardThree';
-import Typography from '@material-ui/core/Typography';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-//import Button from '@material-ui/core/Button';
+
 import { green, pink } from '@material-ui/core/colors';
 import Avatar from '@material-ui/core/Avatar';
 import FolderIcon from '@material-ui/icons/Folder';
 import PageviewIcon from '@material-ui/icons/Pageview';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import Divider from '@material-ui/core/Divider';
-//import CardActionArea from '@material-ui/core/CardActionArea';
+
 import CardActions from '@material-ui/core/CardActions';
 import ReminderList from './reminders';
-import ConnectQb from './connect'
 
-//import Toolbar from '@material-ui/core/Toolbar';
 
-//import Icon from "@material-ui/core/Icon";
 
 
 
@@ -92,17 +89,14 @@ export default function DashBoard() {
                 avatar={<Avatar>
                 <FolderIcon />
                </Avatar>}
-                title="Card 1"
-                subheader="September 14, 2016"
+                title="Company:"
+                subheader="Currently viewing"
                 />
                 <Divider variant="inset" />
                 
                 <CardOne className={classes.centerInteriorContent}/>
          <CardActions>
-              <Typography variant="caption" color="primary" gutterBottom>
-              One paragraph
-              </Typography>
-                
+          
           </CardActions>   
           
           </Card>
@@ -115,7 +109,7 @@ export default function DashBoard() {
                 avatar={<Avatar className={classes.green}>
                   <PageviewIcon />
                 </Avatar>}
-                title="Card 2"
+                title="Profit and Loss"
                 subheader="Total Net Income"
                 />
           <Divider variant="inset" />
@@ -140,8 +134,9 @@ export default function DashBoard() {
           </Card>
           
           </Grid>
-          <ConnectQb />
+         
         </Grid>
+      
         <Grid container className={classes.reminders}>
           
         <ReminderList />

@@ -20,7 +20,7 @@ import DescriptionIcon from '@material-ui/icons/Description';
 
 
 
-const drawerWidth = 165;
+const drawerWidth = 163;
 function ListItemLink(props) {
   const { icon, primary, to } = props;
 
@@ -63,10 +63,11 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerContainer: {
     overflow: 'auto',
+    
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: theme.spacing(2),
   },
 }));
 
@@ -119,8 +120,7 @@ export default function ClippedDrawer() {
           </List>
           <Divider />
           <List aria-label="secondary mailbox folders">
-            <ListItemLink to="/connect" primary="Connect" />
-            <ListItemLink to="/fake" primary="Random" />
+            
           </List>
 
          

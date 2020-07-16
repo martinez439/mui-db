@@ -7,12 +7,15 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import UndoIcon from '@material-ui/icons/Undo';
 import Grid from '@material-ui/core/Grid';
+import { css } from "@emotion/core";
+import MoonLoader from "react-spinners/MoonLoader";
 
 
-
-
-
-
+const override = css`
+  display: block;
+  margin: 4rem 0 0 5rem;
+  border-color: #3F51B6;
+`;
 
 
 export default class ReminderList extends Component {
@@ -20,7 +23,8 @@ export default class ReminderList extends Component {
     super(props);
     this.state = {
         todos: [],
-        completedSection: []
+        completedSection: [],
+        loading: true
       };
       this.markComplete = this.markComplete.bind(this);
       this.deleteReminder = this.deleteReminder.bind(this);
@@ -38,7 +42,7 @@ export default class ReminderList extends Component {
             console.log(response.data)
             //let mongoInfo = response.data
 
-            this.setState({ todos: response.data });
+            this.setState({ todos: response.data, loading: false });
           })
           .catch(error => {
             console.log(error);
@@ -164,7 +168,7 @@ export default class ReminderList extends Component {
             justifyContent:'flex-start', 
             alignContent:'center', 
             textDecoration: "line-through",
-            borderBottom: "3px #ccc dotted"
+            borderBottom: "1px #ccc dotted"
         }}>{ completedSection.reminder } </li>
          <IconButton 
             aria-label="delete" 
@@ -213,6 +217,17 @@ export default class ReminderList extends Component {
                       
                       />
                       </div>
+                      {this.state.loading ? <div className="sweet-loading">
+                    <MoonLoader
+
+
+
+                      css={override}
+                      size={62}
+                      color={"#3f51b6"}
+                      loading={this.state.loading}
+                    />  </div> :
+
                       <Grid container className="GridContainer">
                         <Grid item>
                       <Paper 
@@ -242,7 +257,7 @@ export default class ReminderList extends Component {
                       </Paper>
                       
                       </Grid>
-                      </Grid>
+                      </Grid>}
                     </React.Fragment>
                     
                 
