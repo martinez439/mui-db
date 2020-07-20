@@ -7,11 +7,11 @@ import Avatar from '@material-ui/core/Avatar';
 import PeopleIcon from '@material-ui/icons/People';
 import CardHeader from '@material-ui/core/CardHeader';
 import { css } from "@emotion/core";
-import MoonLoader from "react-spinners/MoonLoader";
+import HashLoader from "react-spinners/HashLoader";
 
 
 const override = css`
-  display: block;
+  display: flex;
   margin: 4rem 0 0 5rem;
   border-color: #3F51B6;
 `;
@@ -52,13 +52,11 @@ export default class CustomerList extends Component {
         return (
             <div>
               <>
-              {loading ? <div className="sweet-loading">
-                    <MoonLoader
-
-
+              {loading ? <div>
+                    <HashLoader
 
                       css={override}
-                      size={62}
+                      size={52}
                       color={"#3f51b6"}
                       loading={this.state.loading}
                     />  </div> :
@@ -78,7 +76,7 @@ export default class CustomerList extends Component {
               <List>
               
                 {items.map(item => (
-                  <ListItem alignItems="flex-start" key={item.Id}>
+                  <ListItem style={{display: 'flex'}} alignItems="flex-start" key={item.Id}>
                     <Divider component="li" style={{
                         margin: '0 0 25px 0'
                   }}><li><h4>{item.DisplayName}</h4></li>

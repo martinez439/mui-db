@@ -127,8 +127,9 @@ export default class Tickets extends Component {
         </Grid>
            
            <Grid 
-           item lg={16} md={12} sm={8}
+           item md={6} sm={6} xs={16}
            style={{marginTop: '5rem', padding: '1rem'}}
+           className="CustomerList"
            >
            <CustomerList  />
            </Grid>
