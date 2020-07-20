@@ -123,10 +123,12 @@ export default class Invoice extends Component {
        </Grid>
 
         <Grid 
-           item md={6} sm={6} xs={16}
+           item md={6} sm={6} xs={12}
            style={{marginTop: '5rem', padding: '1rem'}}
-           className="InvoiceList">
+           >
+             <Grid container className="InvoiceList">
           <InvoiceList />
+          </Grid>
            </Grid>
         </Grid>
       </div>

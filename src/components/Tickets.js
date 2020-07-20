@@ -9,7 +9,13 @@ import NotesOutlinedIcon from '@material-ui/icons/NotesOutlined';
 import CreateIcon from '@material-ui/icons/Create';
 import CustomerList from "./CustomerList";
 import Grid from '@material-ui/core/Grid';
+import { css } from "@emotion/core";
 
+const override = css`
+  display: flex;
+  margin: 4rem 0 0 5rem;
+  border-color: #3F51B6;
+`;
 
 export default class Tickets extends Component {
   
@@ -64,7 +70,7 @@ export default class Tickets extends Component {
     
     return (
       <div>
-        <Grid container spacing={3}>
+        <Grid container  className="CustomerList" spacing={2}>
           <Grid item md={4} sm={6}>
         <form onSubmit={this.onSubmit} style={{marginLeft: '12rem', marginTop: '5rem'}}>
           
@@ -125,16 +131,21 @@ export default class Tickets extends Component {
           
         </form>
         </Grid>
-           
+          
            <Grid 
-           item md={6} sm={6} xs={16}
+           item md={6} sm={6} xs={12}
+           
            style={{marginTop: '5rem', padding: '1rem'}}
-           className="CustomerList"
+           
            >
-           <CustomerList  />
+            <Grid container justify="center" className="CustomerList">
+           <CustomerList  css={override}/>
            </Grid>
-
+           
+           </Grid>
+           
         </Grid>
+        
       </div>
     );
   }

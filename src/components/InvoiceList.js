@@ -86,8 +86,8 @@ export default class InvoiceList extends Component {
                    
                     <h2 style={{display: 'flex', justifyContent:'flex-start'}}>$ {item.Line[0].Amount} {"  "}</h2>
                     {"  "} <h2 style={{display: 'flex', justifyContent:'center'}}> {"  "} | {"  "} </h2> {" "}
-                    <h4 style={{ display: 'flex', justifyContent:'flex-end', color: '#878787'}}> {item.CustomerRef.name}
-                </h4>
+                    <h5 style={{ display: 'flex', justifyContent:'flex-end', color: '#878787'}}> {item.CustomerRef.name}
+                </h5>
                 
                 </li>
                 </Divider>
