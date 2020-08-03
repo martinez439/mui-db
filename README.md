@@ -12,13 +12,18 @@ condescending-mahavira-e6ba7c.netlify.app
 
 * [ReactJS](https://reactjs.org/)
 * [MaterialUI](https://material-ui.com/)
-* [Intuit_Developer-QuickBooks] (https://developer.intuit.com/)
-* [NodeJS(Express-Framework)] (http://expressjs.com/) *See API repo [here](https://github.com/martinez439/mui-api)*
+* [Intuit_Developer-QuickBooks](https://developer.intuit.com/)
+* [NodeJS(Express-Framework)](http://expressjs.com/) :
+##### *See API repo [here](https://github.com/martinez439/mui-api)*
 
 
 
 ![The Simple View Home Page](/public/dashboardLoading.png "Home Page")
 
+Intuit Authentication and Authorization
+
 ![Connect to Quickbooks](/public/intuitAuth.png "Oauth 2.0")
+
+Once auth flow is completed, user is directed back to the dashboard.
 
 ![Dashboard with details](/public/connectedQB.png "Company Financials")
