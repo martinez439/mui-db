@@ -47,8 +47,14 @@ export default class ReminderList extends Component {
           .catch(error => {
             console.log(error);
           });
-          this.updateCompletedList()
+         this.updateCompletedList()
       }
+
+      //componentDidUpdate(prevState) {
+        //if (prevState.todos !== this.state.todos) {
+          //this.addNew();
+        //}
+      //}
 
 
       updateCompletedList = () => {
@@ -80,9 +86,14 @@ export default class ReminderList extends Component {
           
           this.setState({
             todos: this.state.todos.filter(todo => todo._id !== id),
+            completedSection: this.state.completedSection.filter(completedItem => completedItem._id !== id)
           });
           this.updateCompletedList()
-         //window.location.reload();
+         setTimeout(
+          function(){
+        window.location.reload()
+          }, 1000
+     )
           
       };
 
@@ -110,15 +121,15 @@ export default class ReminderList extends Component {
             console.log(response.data)
             //let mongoInfo = response.data
 
-            this.setState({ todos: response.data });
+            this.setState({ todos: response.data }, 
+            () =>  {window.location.reload()
+            });
           })
           .catch(error => {
             console.log(error);
           });
         };
-        
-
-
+              
         undoReminder (id) {
           axios
             .patch("https://pacific-wildwood-91690.herokuapp.com/reminders/" + id, { isComplete: "false" })
@@ -130,10 +141,13 @@ export default class ReminderList extends Component {
             });
             
             this.setState({
-              completedSection: this.state.completedSection.filter(todo => todo._id !== id),
-
-            });
-            window.location.reload();
+              completedSection: this.state.completedSection.filter(todo => todo._id !== id)});
+              setTimeout(
+                function(){
+              window.location.reload()
+                }, 1000
+           )
+            
               
         };
   
@@ -212,8 +226,8 @@ export default class ReminderList extends Component {
 
                       <div style={{justifyContent:'flex-end'}}>
                       <AddReminder 
-                      addReminder={this.addReminder}
                       addNew={this.addNew}
+                      
                       
                       />
                       </div>
@@ -255,7 +269,7 @@ export default class ReminderList extends Component {
                         justifyContent:'center'}}>Completed</h1>
                        {this.doneList()} 
                       </Paper>
-                      
+                    
                       </Grid>
                       </Grid>}
                     </React.Fragment>

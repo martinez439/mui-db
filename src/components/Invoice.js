@@ -62,7 +62,7 @@ export default class Invoice extends Component {
     return (
       <div>
         <Grid container spacing={3}>
-          <Grid item md={4} sm={6}>
+          <Grid item lg={6} md={6} sm={6} xs={12}>
         <form onSubmit={this.onSubmit} style={{marginLeft: '12rem', marginTop: '5rem'}}>
 
           <TextField
@@ -123,8 +123,8 @@ export default class Invoice extends Component {
        </Grid>
 
         <Grid 
-           item md={6} sm={6} xs={12}
-           style={{marginTop: '5rem', padding: '1rem'}}
+           item lg={6} md={6} sm={6} xs={12}
+           style={{marginTop: '5rem', padding: '1rem', width: '100%'}}
            >
              <Grid container className="InvoiceList">
           <InvoiceList />

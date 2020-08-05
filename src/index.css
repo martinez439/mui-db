@@ -32,6 +32,26 @@ code {
 
 };
 
+@media (min-width:601px){
+  .CustomerList{
+    margin: 0 0 0 2.5rem;
+  }
+  .InvoiceList{
+    margin: 0 0 0 5.5rem;
+    width: 900px;
+    
+  }
+
+  .ReminderSection{
+    margin: 0 0 0 5.5rem;
+  }
+  .GridContainer{
+    margin: 0 0 0 4rem;
+  }
+
+
+}
+
 
 
 

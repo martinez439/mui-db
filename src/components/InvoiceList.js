@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Card from '@material-ui/core/Card';
+import Box from '@material-ui/core/Box';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
@@ -67,7 +68,7 @@ export default class InvoiceList extends Component {
                       loading={this.state.loading}
                     />  </div> :
 
-              <Card style={{paddingRight: '2rem'}}>
+              <Card style={{ display: 'inline-block', paddingRight: '2rem', width: '400px'}}>
                 <CardHeader title="Invoices"  subheader="Outstanding"
                 avatar={
                   <Avatar aria-label="recipe" className={avatar} style={{backgroundColor: 'none'}}>

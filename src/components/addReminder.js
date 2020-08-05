@@ -12,7 +12,6 @@ import PropTypes from 'prop-types';
 
 export class AddReminder extends Component {
   state = {
-    
     reminder: '',
     isComplete: false
   }
