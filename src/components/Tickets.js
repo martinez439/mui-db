@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import clsx from 'clsx';
-import NotesOutlinedIcon from '@material-ui/icons/NotesOutlined';
 import CreateIcon from '@material-ui/icons/Create';
 import CustomerList from "./CustomerList";
 import Grid from '@material-ui/core/Grid';
