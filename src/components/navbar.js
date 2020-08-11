@@ -3,6 +3,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
+import DashboardIcon from '@material-ui/icons/Dashboard';
 
 const useStyles = makeStyles((theme) => ({
     
@@ -22,7 +23,7 @@ export default function NavBar() {
 <AppBar position="fixed" className={classes.appBar}>
 <Toolbar>
   <Typography variant="h6" noWrap>
-    The Simple View
+    The Simple View <DashboardIcon fontSize="large" style={{marginBottom: '-0.5rem'}}/>
   </Typography>
 </Toolbar>
 </AppBar>
