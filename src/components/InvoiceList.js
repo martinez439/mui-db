@@ -50,6 +50,10 @@ export default class InvoiceList extends Component {
 
     render() {
       const { items, loading } = this.state;
+     
+    
+    
+     
         return (
             <div className="InvoiceList">
               <>
@@ -67,7 +71,7 @@ export default class InvoiceList extends Component {
                       loading={this.state.loading}
                     />  </div> :
 
-              <Card style={{ display: 'inline-block', paddingRight: '2rem', width: '400px'}}>
+              <Card style={{ display: 'inline-block', paddingRight: '2rem', width: '400px', overflow:'auto'}}>
                 <CardHeader title="Invoices"  subheader="Outstanding"
                 avatar={
                   <Avatar aria-label="recipe" className={avatar} style={{backgroundColor: 'none'}}>
@@ -75,25 +79,28 @@ export default class InvoiceList extends Component {
                   </Avatar>
                 }/>
               <List>
-              
+              <div style={{paddingLeft: '2rem', marginBottom:'-1rem'}}>Invoice Amount      <span style={{paddingLeft:'5rem'}}>Customer Name</span></div>
               {items.map(item => (
+                
                 <ListItem style={{display: 'flex'}} key={item.Id}>
                   <Divider component="li" style={{
                       margin: '1rem 0 1rem 1rem',
                       width: '100%'
                 }}>
-                  <li key={item.Id}>
+                <li key={item.Id}>
                    
                    {/** <h2 style={{display: 'flex', justifyContent:'flex-start'}}>$ {item.Line[0].Amount} {"  "}</h2>
                     {"  "} <h2 style={{display: 'flex', justifyContent:'center'}}> {"  "} | {"  "} </h2> {" "}
                     <h5 style={{ display: 'flex', justifyContent:'flex-end', color: '#878787'}}> {item.CustomerRef.name}
                 </h5>
                 **/}
-
-                <h2 style={{display: 'flex', justifyContent:'flex-start'}}>$ {item.Line[0].Amount} | {item.CustomerRef.name}</h2>
-                    
                 
+                <h2 style={{display:'flex', justifyContent:'flex-start'}}>$ {Math.trunc(item.Line[0].Amount).toString().split( /(?=(?:\d{3})+(?:\.|$))/g ).join( "," )}   
+                <span style={{ display: 'flex',marginLeft:'auto',paddingLeft:'2rem', fontSize: '1rem', justifyContent:'end', color: '#878787'}}>{item.CustomerRef.name}</span></h2>  
+                    
+               
                 </li>
+                
                 </Divider>
                 </ListItem>
               ))}

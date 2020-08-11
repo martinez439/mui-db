@@ -63,7 +63,7 @@ export default class CustomerList extends Component {
 
                   
               <Card 
-              style={{ marginRight:'2rem'}}
+              style={{ marginRight:'2rem', overflow:'auto', width: '300px'}}
               className="CustomerList">
                 <CardHeader title="Customers"  subheader="Active"
                 avatar={

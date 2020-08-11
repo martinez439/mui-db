@@ -71,7 +71,7 @@ export default class Tickets extends Component {
     return (
       <div>
         <Grid container  className="CustomerList" spacing={2}>
-          <Grid item md={4} sm={6}>
+          <Grid item md={6} sm={6}>
         <form onSubmit={this.onSubmit} style={{marginLeft: '12rem', marginTop: '5rem'}}>
           
         <TextField
@@ -79,7 +79,7 @@ export default class Tickets extends Component {
           label="Customer Name"
           id="filled-start-adornment"
           className={clsx()}
-          onChange={this.onChangeDescription}
+          onChange={this.onChangeEmployee}
           value={this.state.customer}
           InputProps={{
             startAdornment: <InputAdornment position="start">
@@ -88,13 +88,13 @@ export default class Tickets extends Component {
           variant="filled"
         />        
         <br></br>
-        <div className="form-group">
+        {/** <div className="form-group">
           <TextField
           style={{marginBottom: '1rem'}}
           label="Description"
           id="filled-start-adornment"
           className={clsx()}
-          onChange={this.onChangeEmployee}
+          onChange={this.onChangeDescription}
           value={this.state.notes}
           InputProps={{
             startAdornment: <InputAdornment position="start">
@@ -104,7 +104,7 @@ export default class Tickets extends Component {
           variant="filled"
         /> 
         </div>
-        
+        **/}
         
       
 
@@ -117,7 +117,7 @@ export default class Tickets extends Component {
               endIcon={<Icon>send</Icon>}
               onSubmit={this.onSubmit}
             >
-              Create
+              Add new
             </Button>
 
 
@@ -133,7 +133,7 @@ export default class Tickets extends Component {
         </Grid>
           
            <Grid 
-           item md={6} sm={6} xs={12}
+           item lg={6} md={4} sm={6} xs={12}
            
            style={{marginTop: '5rem', padding: '1rem'}}
            

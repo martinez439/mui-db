@@ -82,7 +82,7 @@ export default class Invoice extends Component {
         <div className="form-group">
           <TextField
           style={{marginBottom: '1rem'}}
-          label="Service Description"
+          label="Customer Name"
           id="filled-start-adornment"
           className={clsx()}
           onChange={this.onChangeEmployee}
